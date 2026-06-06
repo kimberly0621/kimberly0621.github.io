@@ -1,15 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Awesome Website</title>
+    <meta charset="UTF-8">
+    <title>Happy Birthday!</title>
+    <style>
+        /* This section controls the colors and fonts to make it look pretty */
+        body {
+            background-color: #fff0f5; /* Soft lavender blush background */
+            color: #4a4a4a;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .card {
+            background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #ff69b4; /* Hot pink for the main title */
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #ff1493;
+            border-bottom: 2px solid #ffe4e1;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .coupon-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .coupon {
+            border: 2px dashed #ff69b4;
+            background-color: #fff9fb;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 40%;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Welcome to My Website!</h1>
-    <p>This is my very first page hosted on GitHub Pages.</p>
+    <div class="card">
+        <!-- Main Birthday Header -->
+        <h1>Happy Birthday! 🎂</h1>
+        <p>To the most amazing girlfriend in the world. I wanted to make something special just for you to celebrate your day.</p>
 
-    <h2>About Me</h2>
-    <p>Write a little bit about yourself, your hobbies, or what you like to build here!</p>
+        <!-- Section 1: Your Letter -->
+        <h2>A Little Message For You</h2>
+        <p>Type your heartfelt birthday paragraph here. You can talk about how much she means to you, look back on the past year, or share your wishes for her year ahead!</p>
+
+        <!-- Section 2: Favorite Memories -->
+        <h2>Our Favorite Memories ✨</h2>
+        <p>Here are just a few of my favorite moments with you:</p>
+        <ul style="text-align: left; display: inline-block; font-size: 1.1em;">
+            <li>🍔 Our messy first date trying to eat giant burgers.</li>
+            <li>✈️ Staying up all night talking before our weekend trip.</li>
+            <li>🎬 Sneaking extra snacks into the movie theater.</li>
+        </ul>
+
+        <!-- Section 3: Birthday Coupons -->
+        <h2>Your Birthday Coupons 🎟️</h2>
+        <p>Take a screenshot to redeem these anytime!</p>
+        <div class="coupon-container">
+            <div class="coupon">
+                <strong>🎟️ Coupon #1</strong>
+                <p>One Free Coffee & Pastry Delivery</p>
+            </div>
+            <div class="coupon">
+                <strong>🍿 Coupon #2</strong>
+                <p>Full Control Over Movie Night Selection</p>
+            </div>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 1.5em;">❤️ I love you! ❤️</p>
+    </div>
 
 </body>
 </html>
