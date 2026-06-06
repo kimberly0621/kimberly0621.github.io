@@ -3,28 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
+    <title>A Special Surprise for You! 💙</title>
     <style>
         /* Theme: Sky Blue & Baby Blue Blend */
         body {
-            background: linear-gradient(135deg, #e0f2fe, #bae6fd); /* Blends sky and baby blue */
-            color: #1e3a8a; /* Deep blue for clear, readable text */
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            color: #1e3a8a;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             padding: 40px 20px;
             margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .card {
-            background-color: rgba(255, 255, 255, 0.9); /* Crisp white card that lets background peek through */
+
+        /* Quiz Lock Screen Styles */
+        #quiz-screen {
+            background-color: white;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 3px solid #7dd3fc;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 2px solid #bae6fd;
+            border-radius: 12px;
+            font-size: 1em;
+            outline: none;
+            text-align: center;
+        }
+        input[type="text"]:focus {
+            border-color: #0284c7;
+        }
+        button {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #0369a1;
+        }
+        #error-message {
+            color: #ef4444;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Main Card Styles (Hidden until unlocked) */
+        #main-card {
+            background-color: rgba(255, 255, 255, 0.95);
             max-width: 650px;
-            margin: 0 auto;
             padding: 40px;
             border-radius: 24px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             border: 3px solid #7dd3fc;
+            display: none; /* Secretly hidden at start */
         }
         h1 {
-            color: #0284c7; /* Bright sky blue */
+            color: #0284c7;
             font-size: 2.8em;
             margin-bottom: 10px;
         }
@@ -54,6 +103,8 @@
             font-weight: bold;
             color: #0369a1;
         }
+
+        /* Interactive Coupon Styles */
         .coupon-container {
             display: flex;
             justify-content: space-around;
@@ -67,32 +118,54 @@
             margin: 10px;
             border-radius: 12px;
             width: 42%;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
         }
-        .character-footer {
-            font-size: 1.5em;
-            margin-top: 30px;
+        .coupon:hover {
+            transform: scale(1.05);
+            background-color: #e0f2fe;
+        }
+        
+        /* Interactive Easter Egg Character Styles */
+        .character-bubble {
+            background-color: #e0f2fe;
+            padding: 10px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            display: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <!-- Main Header -->
-        <h1>Happy Birthday! 🥳💙</h1>
-        <p>To my incredible girlfriend! I wanted to build a little corner of the internet just to celebrate you and all the amazing things you do.</p>
+    <!-- INTERACTIVE SCREEN 1: THE QUIZ GATEKEEPER -->
+    <div id="quiz-screen">
+        <h2>🔒 Security Check for Birthday Girls</h2>
+        <p>To unlock your card, answer this insider question:</p>
+        <!-- CUSTOMIZE THIS QUESTION -->
+        <p><strong>What is our absolute favorite place we've traveled to together?</strong></p> 
+        <input type="text" id="quiz-answer" placeholder="Type your answer here...">
+        <br>
+        <button onclick="checkAnswer()">Unlock Card ✨</button>
+        <div id="error-message">❌ Wrong answer! Try again, or guess harder! 😉</div>
+    </div>
 
-        <!-- Dynamic Interest Badges -->
+    <!-- INTERACTIVE SCREEN 2: THE MAIN CARD (Revealed on success) -->
+    <div id="main-card">
+        <h1>Happy Birthday! 🥳💙</h1>
+        <p>To my incredible girlfriend! I built this corner of the internet just for you.</p>
+
         <div class="interest-grid">
             <div class="interest-badge">🚴‍♀️ Champion Cyclist</div>
             <div class="interest-badge">🏊‍♀️ 🏃‍♀️ Triathlon Queen</div>
             <div class="interest-badge">✈️ World Traveler</div>
         </div>
 
-        <!-- Birthday Message -->
         <h2>A Message For You 📝</h2>
-        <p>Whether you're crushing a triathlon, cycling up a massive hill, or planning our next big travel adventure, you absolutely inspire me every single day. I love your energy, your drive, and how much fun we have together. I hope this next year brings you even closer to your goals (and maybe some more travel stamps)!</p>
+        <p>Whether you're crushing a triathlon, cycling up a massive hill, or planning our next big travel adventure, you absolutely inspire me every single day. I love your energy, your drive, and how much fun we have together. I hope this next year brings you even closer to your goals!</p>
 
-        <!-- Travel & Adventure Memories List -->
         <h2>Our Next Big Adventures 🗺️</h2>
         <ul style="text-align: left; display: inline-block; font-size: 1.1em; line-height: 1.8;">
             <li>🌍 Exploring new cities and checking off your travel bucket list.</li>
@@ -100,29 +173,67 @@
             <li>🥇 Cheering you on at the finish line of your next big race.</li>
         </ul>
 
-        <!-- Custom Coupons based on her interests -->
-        <h2>Custom Birthday Coupons 🎟️</h2>
-        <p>Take a screenshot to redeem these whenever you want!</p>
+        <!-- CLICKABLE INTERACTIVE COUPONS -->
+        <h2>Your Birthday Coupons 🎟️</h2>
+        <p><em>(Click a coupon to claim it!)</em></p>
         <div class="coupon-container">
-            <div class="coupon">
+            <div class="coupon" onclick="claimCoupon(1, 'Post-Workout Massager & Smoothie Delivery')">
                 <strong>🚴‍♀️ Coupon #1</strong>
-                <p>One Post-Workout Massager & Smoothie Delivery</p>
+                <p id="c1-text">Click to reveal reward...</p>
             </div>
-            <div class="coupon">
+            <div class="coupon" onclick="claimCoupon(2, 'A Fully Planned Weekend Getaway Trip')">
                 <strong>✈️ Coupon #2</strong>
-                <p>Pack Your Bags! I Plan and Pay For Our Next Weekend Getaway</p>
+                <p id="c2-text">Click to reveal reward...</p>
             </div>
         </div>
         
-        <!-- Character / Sign-off Section -->
-        <div class="character-footer">
-            <p>🐟 🐟 🐟</p>
-            <p style="font-size: 0.9em; color: #64748b;">
-                Approved by <strong>Hangyodon</strong> & a squad of <strong>Blue Pikmin</strong> 🟦🌱
-            </p>
-            <p style="margin-top: 20px; font-size: 1.3em; font-weight: bold;">❤️ I love you! ❤️</p>
+        <!-- CLICKABLE EASTER EGGS -->
+        <h2>Tap the Crew For a Message 💬</h2>
+        <div style="font-size: 2.5em; cursor: pointer; margin-top: 10px;">
+            <span onclick="speakCharacter('hangyodon')">🐟</span> 
+            <span onclick="speakCharacter('pikmin')">🟦🌱</span>
         </div>
+        <div id="bubble" class="character-bubble"></div>
+
+        <p style="margin-top: 30px; font-size: 1.5em; font-weight: bold;">❤️ I love you! ❤️</p>
     </div>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // 1. QUIZ ANSWER LOGIC
+        function checkAnswer() {
+            const userAnswer = document.getElementById("quiz-answer").value.toLowerCase().trim();
+            
+            // CHANGE "japan" TO YOUR ACTUAL SECRET ANSWER (Keep it lowercase!)
+            const correctAnswer = "japan"; 
+
+            if (userAnswer === correctAnswer) {
+                document.getElementById("quiz-screen").style.display = "none";
+                document.getElementById("main-card").style.display = "block";
+                alert("🎉 ACCESS GRANTED! Happy Birthday!! 🎉");
+            } else {
+                document.getElementById("error-message").style.display = "block";
+            }
+        }
+
+        // 2. CLICKABLE COUPON LOGIC
+        function claimCoupon(num, reward) {
+            document.getElementById(`c${num}-text`).innerHTML = `<strong>REDEEMED:</strong> ${reward}! 🎁`;
+            alert(`🎟️ Coupon #${num} Claimed! Screenshot this to use it!`);
+        }
+
+        // 3. CHARACTER EASTER EGG LOGIC
+        function speakCharacter(character) {
+            const bubble = document.getElementById("bubble");
+            bubble.style.display = "inline-block";
+            
+            if (character === 'hangyodon') {
+                bubble.innerText = "🐟 Hangyodon says: Have a swimmingly perfect birthday! Don't let Sayuri steal your cake!";
+            } else if (character === 'pikmin') {
+                bubble.innerText = "🟦🌱 Blue Pikmin says: We carried 10 heavy birthday berries just for you!";
+            }
+        }
+    </script>
 
 </body>
 </html>
