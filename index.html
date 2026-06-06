@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Surprise for You! 💙</title>
+    <title>給最特別的妳！生日快樂 💙</title>
     <style>
-        /* Theme: Sky Blue & Baby Blue Blend */
+        /* 背景主題：融合天空藍與粉藍的漸層 */
         body {
             background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-            color: #1e3a8a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1e3a8a; /* 深藍色文字，確保清晰易讀 */
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             text-align: center;
             padding: 40px 20px;
             margin: 0;
@@ -19,7 +19,7 @@
             align-items: center;
         }
 
-        /* Quiz Lock Screen Styles */
+        /* 謎題鎖定畫面的樣式 */
         #quiz-screen {
             background-color: white;
             max-width: 450px;
@@ -62,7 +62,7 @@
             display: none;
         }
 
-        /* Main Card Styles (Hidden until unlocked) */
+        /* 主卡片樣式（一開始先隱藏） */
         #main-card {
             background-color: rgba(255, 255, 255, 0.95);
             max-width: 650px;
@@ -70,11 +70,11 @@
             border-radius: 24px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             border: 3px solid #7dd3fc;
-            display: none; /* Secretly hidden at start */
+            display: none; 
         }
         h1 {
             color: #0284c7;
-            font-size: 2.8em;
+            font-size: 2.5em;
             margin-bottom: 10px;
         }
         h2 {
@@ -85,7 +85,7 @@
             display: inline-block;
         }
         p {
-            font-size: 1.15em;
+            font-size: 1.1em;
             line-height: 1.6;
         }
         .interest-grid {
@@ -104,7 +104,7 @@
             color: #0369a1;
         }
 
-        /* Interactive Coupon Styles */
+        /* 互動式禮物券樣式 */
         .coupon-container {
             display: flex;
             justify-content: space-around;
@@ -126,111 +126,115 @@
             background-color: #e0f2fe;
         }
         
-        /* Interactive Easter Egg Character Styles */
+        /* 隱藏彩蛋對話框樣式 */
         .character-bubble {
             background-color: #e0f2fe;
-            padding: 10px;
+            padding: 12px;
             border-radius: 12px;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 15px;
             font-weight: bold;
+            max-width: 80%;
             display: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- INTERACTIVE SCREEN 1: THE QUIZ GATEKEEPER -->
+    <!-- 互動第一關：專屬密碼解鎖 -->
     <div id="quiz-screen">
-        <h2>🔒 Security Check for Birthday Girls</h2>
-        <p>To unlock your card, answer this insider question:</p>
-        <!-- CUSTOMIZE THIS QUESTION -->
-        <p><strong>What is our absolute favorite place we've traveled to together?</strong></p> 
-        <input type="text" id="quiz-answer" placeholder="Type your answer here...">
+        <h2>🔒 壽星專屬安全檢查</h2>
+        <p>請輸入我們之間的專屬密碼來解鎖卡片：</p>
+        <!-- 可以在這裡修改你的提示問題 -->
+        <p><strong>我們最喜歡一起去旅遊的國家/地方是哪裡？</strong></p> 
+        <input type="text" id="quiz-answer" placeholder="請在這裡輸入答案...">
         <br>
-        <button onclick="checkAnswer()">Unlock Card ✨</button>
-        <div id="error-message">❌ Wrong answer! Try again, or guess harder! 😉</div>
+        <button onclick="checkAnswer()">解鎖生日卡片 ✨</button>
+        <div id="error-message">❌ 答案不對喔！再認真猜一次嘛！😉</div>
     </div>
 
-    <!-- INTERACTIVE SCREEN 2: THE MAIN CARD (Revealed on success) -->
+    <!-- 互動第二關：主卡片內容（答對後顯示） -->
     <div id="main-card">
-        <h1>Happy Birthday! 🥳💙</h1>
-        <p>To my incredible girlfriend! I built this corner of the internet just for you.</p>
+        <h1>生日快樂！🥳💙</h1>
+        <p>給我最棒的女朋友！我特地為妳打造了這個專屬的網頁角落，用來慶祝妳的大日子。</p>
 
+        <!-- 專屬標籤 -->
         <div class="interest-grid">
-            <div class="interest-badge">🚴‍♀️ Champion Cyclist</div>
-            <div class="interest-badge">🏊‍♀️ 🏃‍♀️ Triathlon Queen</div>
-            <div class="interest-badge">✈️ World Traveler</div>
+            <div class="interest-badge">🚴‍♀️ 單車女神</div>
+            <div class="interest-badge">🏊‍♀️ 🏃‍♀️ 三鐵王后</div>
+            <div class="interest-badge">✈️ 世界旅人</div>
         </div>
 
-        <h2>A Message For You 📝</h2>
-        <p>Whether you're crushing a triathlon, cycling up a massive hill, or planning our next big travel adventure, you absolutely inspire me every single day. I love your energy, your drive, and how much fun we have together. I hope this next year brings you even closer to your goals!</p>
+        <!-- 給她的話 -->
+        <h2>寫給妳的心裡話 📝</h2>
+        <p>無論看妳在三鐵賽道上衝刺、騎著單車挑戰陡坡，還是和妳一起規劃下一次的旅行冒險，妳的活力和堅持每一天都在啟發著我。我好喜歡妳的充滿熱情、妳的幹勁，還有我們在一起時所有大笑的瞬間。希望新的一年能帶妳解鎖更多目標（還有蓋更多護照章）！</p>
 
-        <h2>Our Next Big Adventures 🗺️</h2>
+        <!-- 未來冒險清單 -->
+        <h2>我們接下來的大冒險 🗺️</h2>
         <ul style="text-align: left; display: inline-block; font-size: 1.1em; line-height: 1.8;">
-            <li>🌍 Exploring new cities and checking off your travel bucket list.</li>
-            <li>🚴‍♂️ Finding the best scenic cycling routes together.</li>
-            <li>🥇 Cheering you on at the finish line of your next big race.</li>
+            <li>🌍 探索新的城市，一起把妳的旅遊清單全部打勾。</li>
+            <li>🚴‍♂️ 尋找最美的單車路線，一路騎車吹風。</li>
+            <li>🥇 在妳的下一場重要比賽終點線，大聲為妳歡呼喝采。</li>
         </ul>
 
-        <!-- CLICKABLE INTERACTIVE COUPONS -->
-        <h2>Your Birthday Coupons 🎟️</h2>
-        <p><em>(Click a coupon to claim it!)</em></p>
+        <!-- 互動式禮物券 -->
+        <h2>妳的專屬生日禮物券 🎟️</h2>
+        <p><em>（點擊卡片即可兌換喔！）</em></p>
         <div class="coupon-container">
-            <div class="coupon" onclick="claimCoupon(1, 'Post-Workout Massager & Smoothie Delivery')">
-                <strong>🚴‍♀️ Coupon #1</strong>
-                <p id="c1-text">Click to reveal reward...</p>
+            <div class="coupon" onclick="claimCoupon(1, '賽後全身按摩放鬆 + 特製果昔外送')">
+                <strong>🚴‍♀️ 禮物券 #1</strong>
+                <p id="c1-text">點擊解鎖獎勵...</p>
             </div>
-            <div class="coupon" onclick="claimCoupon(2, 'A Fully Planned Weekend Getaway Trip')">
-                <strong>✈️ Coupon #2</strong>
-                <p id="c2-text">Click to reveal reward...</p>
+            <div class="coupon" onclick="claimCoupon(2, '機票住宿我全包！專屬規劃的小週末輕旅行')">
+                <strong>✈️ 禮物券 #2</strong>
+                <p id="c2-text">點擊解鎖獎勵...</p>
             </div>
         </div>
         
-        <!-- CLICKABLE EASTER EGGS -->
-        <h2>Tap the Crew For a Message 💬</h2>
+        <!-- 角色彩蛋專區 -->
+        <h2>點擊牠們聽聽祝福 💬</h2>
         <div style="font-size: 2.5em; cursor: pointer; margin-top: 10px;">
-            <span onclick="speakCharacter('hangyodon')">🐟</span> 
-            <span onclick="speakCharacter('pikmin')">🟦🌱</span>
+            <span onclick="speakCharacter('hangyodon')" title="點擊人魚漢頓">🐟</span> 
+            <span onclick="speakCharacter('pikmin')" title="點擊藍色皮克敏">🟦🌱</span>
         </div>
         <div id="bubble" class="character-bubble"></div>
 
-        <p style="margin-top: 30px; font-size: 1.5em; font-weight: bold;">❤️ I love you! ❤️</p>
+        <p style="margin-top: 40px; font-size: 1.5em; font-weight: bold;">❤️ 我愛妳！❤️</p>
     </div>
 
-    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <!-- 互動網頁邏輯 (JavaScript) -->
     <script>
-        // 1. QUIZ ANSWER LOGIC
+        // 1. 密碼驗證邏輯
         function checkAnswer() {
             const userAnswer = document.getElementById("quiz-answer").value.toLowerCase().trim();
             
-            // CHANGE "japan" TO YOUR ACTUAL SECRET ANSWER (Keep it lowercase!)
-            const correctAnswer = "japan"; 
+            // 請把 "日本" 更換成妳設定的正確答案（建議維持小寫或中文）
+            const correctAnswer = "日本"; 
 
             if (userAnswer === correctAnswer) {
                 document.getElementById("quiz-screen").style.display = "none";
                 document.getElementById("main-card").style.display = "block";
-                alert("🎉 ACCESS GRANTED! Happy Birthday!! 🎉");
+                alert("🎉 密碼正確！生日快樂！！🎉");
             } else {
                 document.getElementById("error-message").style.display = "block";
             }
         }
 
-        // 2. CLICKABLE COUPON LOGIC
+        // 2. 禮物券點擊邏輯
         function claimCoupon(num, reward) {
-            document.getElementById(`c${num}-text`).innerHTML = `<strong>REDEEMED:</strong> ${reward}! 🎁`;
-            alert(`🎟️ Coupon #${num} Claimed! Screenshot this to use it!`);
+            document.getElementById(`c${num}-text`).innerHTML = `<strong>已兌換：</strong> ${reward}! 🎁`;
+            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌現吧！`);
         }
 
-        // 3. CHARACTER EASTER EGG LOGIC
+        // 3. 角色對話彩蛋邏輯
         function speakCharacter(character) {
             const bubble = document.getElementById("bubble");
             bubble.style.display = "inline-block";
             
             if (character === 'hangyodon') {
-                bubble.innerText = "🐟 Hangyodon says: Have a swimmingly perfect birthday! Don't let Sayuri steal your cake!";
+                bubble.innerText = "🐟 人魚漢頓（Hangyodon）說：祝妳生日快樂！今天像在水裡一樣游得自由自在！對了，別讓小百合把妳的蛋糕吃光喔！";
             } else if (character === 'pikmin') {
-                bubble.innerText = "🟦🌱 Blue Pikmin says: We carried 10 heavy birthday berries just for you!";
+                bubble.innerText = "🟦🌱 藍色皮克敏說：我們今天不怕淹水，特地幫妳搬運了 10 顆超大、超甜的生日覆盆莓過來喔！";
             }
         }
     </script>
