@@ -16,9 +16,9 @@
             min-height: 100vh;
         }
 
-        /* 置中容器：改用標準的 block 與 margin 置中，完全避開 flex 衝突 */
+        /* 置中容器 */
         .card-wrapper {
-            margin: 10vh auto;
+            margin: 5vh auto;
             width: 100%;
         }
 
@@ -32,7 +32,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border: 3px solid #7dd3fc;
             box-sizing: border-box;
-            display: inline-block; /* 確保區塊能正常居中 */
+            display: inline-block;
         }
 
         input[type="text"] {
@@ -69,7 +69,7 @@
             display: none;
         }
 
-        /* 主卡片樣式：強制使用不可動搖的 display: none !important */
+        /* 主卡片樣式：預設強制隱藏 */
         #main-card {
             background-color: rgba(255, 255, 255, 0.95);
             width: 100%;
@@ -79,7 +79,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             border: 3px solid #7dd3fc;
             box-sizing: border-box;
-            display: none !important; /* 強制隱藏，誰都不能干擾 */
+            display: none !important;
         }
 
         h1 {
@@ -110,6 +110,47 @@
             border-radius: 50px;
             font-weight: bold;
             border: 1px solid;
+        }
+
+        /* 📸 拍立得相簿牆樣式 */
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+            padding: 10px;
+        }
+        .polaroid {
+            background: white;
+            padding: 15px 15px 25px 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            width: 240px;
+            transition: transform 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+        /* 讓照片有一點隨機手寫卡片的歪斜感，更像拍立得 */
+        .polaroid.pic1 { transform: rotate(-3deg); }
+        .polaroid.pic2 { transform: rotate(2deg); }
+        .polaroid.pic3 { transform: rotate(-1deg); }
+
+        .polaroid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* 確保照片不會變形 */
+            border: 1px solid #e2e8f0;
+        }
+        .caption {
+            font-family: 'PingFang TC', sans-serif;
+            font-weight: bold;
+            color: #334155;
+            margin-top: 15px;
+            font-size: 1em;
         }
 
         /* 互動式禮物券樣式 */
@@ -174,12 +215,25 @@
             <h2>寫給妳的心裡話 📝</h2>
             <p>無論看妳在三鐵賽道上衝刺、騎著單車挑戰陡坡，還是和妳一起規劃下一次的旅行冒險，妳的活力和堅持每一天都在啟發著我。我好喜歡妳的充滿熱情、妳的幹勁，還有我們在一起時所有大笑的瞬間。希望新的一年能帶妳解鎖更多目標（還有蓋更多護照章）！</p>
 
-            <h2>我們接下來的大冒險 🗺️</h2>
-            <ul style="text-align: left; display: inline-block; font-size: 1.1em; line-height: 1.8;">
-                <li>🌍 探索新的城市，一起把妳的旅遊清單全部打勾。</li>
-                <li>🚴‍♂️ 尋找最美的單車路線，一路騎車吹風。</li>
-                <li>🥇 在妳的下一場重要比賽終點線，大聲為妳歡呼喝采。</li>
-            </ul>
+            <h2>我們的專屬回憶牆 🖼️</h2>
+            <p>點擊或滑過照片可以放大喔！</p>
+            
+            <div class="gallery-container">
+                <div class="polaroid pic1">
+                    <img src="https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=500" alt="回憶一">
+                    <div class="caption">🚴‍♂️ 陪妳一起破風的單車日</div>
+                </div>
+
+                <div class="polaroid pic2">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500" alt="回憶二">
+                    <div class="caption">✈️ 我們在海邊的旅行冒險</div>
+                </div>
+
+                <div class="polaroid pic3">
+                    <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=500" alt="回憶三">
+                    <div class="caption">🥇 慶祝妳完賽的驕傲時刻！</div>
+                </div>
+            </div>
 
             <h2>妳的專屬生日禮物券 🎟️</h2>
             <p><em>（點擊卡片即可兌換喔！）</em></p>
@@ -207,32 +261,25 @@
     </div>
 
     <script>
-        // 1. 密碼驗證與顯示控制
         function checkAnswer() {
             const userAnswer = document.getElementById("quiz-answer").value.toLowerCase().trim();
             const correctAnswer = "日本"; 
 
             if (userAnswer === correctAnswer) {
-                // 隱藏問題畫面
                 document.getElementById("quiz-screen").style.display = "none";
-                
-                // 強制解除隱藏並以 inline-block 漂亮置中顯示
                 const mainCard = document.getElementById("main-card");
                 mainCard.style.setProperty("display", "inline-block", "important");
-                
                 alert("🎉 密碼正確！生日快樂！！🎉");
             } else {
                 document.getElementById("error-message").style.display = "block";
             }
         }
 
-        // 2. 禮物券點擊邏輯
         function claimCoupon(num, reward) {
             document.getElementById(`c${num}-text`).innerHTML = `<strong>已兌換：</strong> ${reward}! 🎁`;
             alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌現吧！`);
         }
 
-        // 3. 角色對話彩蛋邏輯
         function speakCharacter(character) {
             const bubble = document.getElementById("bubble");
             bubble.style.display = "inline-block";
