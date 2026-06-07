@@ -14,19 +14,28 @@
             padding: 40px 20px;
             margin: 0;
             min-height: 100vh;
+            /* 修正：移除了直接影響全畫面的 flex，改用標準垂直佈局並交由容器置中 */
+        }
+
+        /* 新增：網頁內容置中容器，確保兩個階段的卡片都能完美居中 */
+        .page-container {
+            min-height: 90vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100%;
         }
 
         /* 謎題鎖定畫面的樣式 */
         #quiz-screen {
             background-color: white;
+            width: 100%;
             max-width: 450px;
             padding: 40px;
             border-radius: 24px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border: 3px solid #7dd3fc;
+            box-sizing: border-box;
         }
         input[type="text"] {
             width: 80%;
@@ -62,15 +71,17 @@
             display: none;
         }
 
-        /* 主卡片樣式（一開始先隱藏） */
+        /* 主卡片樣式（一開始確實隱藏） */
         #main-card {
             background-color: rgba(255, 255, 255, 0.95);
+            width: 100%;
             max-width: 650px;
             padding: 40px;
             border-radius: 24px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             border: 3px solid #7dd3fc;
-            display: none; 
+            display: none; /* 預設隱藏 */
+            box-sizing: border-box;
         }
         h1 {
             color: #0284c7;
@@ -141,68 +152,72 @@
 </head>
 <body>
 
-    <!-- 互動第一關：專屬密碼解鎖 -->
-    <div id="quiz-screen">
-        <h2>🔒 壽星專屬安全檢查</h2>
-        <p>請輸入我們之間的專屬密碼來解鎖卡片：</p>
-        <!-- 可以在這裡修改你的提示問題 -->
-        <p><strong>我們最喜歡一起去旅遊的國家/地方是哪裡？</strong></p> 
-        <input type="text" id="quiz-answer" placeholder="請在這裡輸入答案...">
-        <br>
-        <button onclick="checkAnswer()">解鎖生日卡片 ✨</button>
-        <div id="error-message">❌ 答案不對喔！再認真猜一次嘛！😉</div>
-    </div>
+    <!-- 修正：加上這層 page-container 容器，讓內容在不同關卡都能完美居中不跑版 -->
+    <div class="page-container">
 
-    <!-- 互動第二關：主卡片內容（答對後顯示） -->
-    <div id="main-card">
-        <h1>生日快樂！🥳💙</h1>
-        <p>給我最棒的女朋友！我特地為妳打造了這個專屬的網頁角落，用來慶祝妳的大日子。</p>
-
-        <!-- 專屬標籤 -->
-        <div class="interest-grid">
-            <!-- F1：法拉利紅 -->
-            <div class="interest-badge" style="border-color: #ef4444; color: #b91c1c; background-color: #fef2f2;">🏎️ 樂樂首席副駕</div>
-            <!-- 三鐵：運動活力綠 -->
-            <div class="interest-badge" style="border-color: #10b981; color: #047857; background-color: #ecfdf5;">🏊‍♀️ 🚴‍♀️ 🏃‍♀️ 三鐵女王</div>
-            <!-- 旅遊：冒險探險橘 -->
-            <div class="interest-badge" style="border-color: #f97316; color: #c2410c; background-color: #fff7ed;">✈️ 🇮🇸 🇯🇵 世界旅人</div>
+        <!-- 互動第一關：專屬密碼解鎖 -->
+        <div id="quiz-screen">
+            <h2>🔒 壽星專屬安全檢查</h2>
+            <p>請輸入我們之間的專屬密碼來解鎖卡片：</p>
+            <p><strong>我們最喜歡一起去旅遊的國家/地方是哪裡？</strong></p> 
+            <input type="text" id="quiz-answer" placeholder="請在這裡輸入答案...">
+            <br>
+            <button onclick="checkAnswer()">解鎖生日卡片 ✨</button>
+            <div id="error-message">❌ 答案不對喔！再認真猜一次嘛！😉</div>
         </div>
 
-        <!-- 給她的話 -->
-        <h2>寫給妳的心裡話 📝</h2>
-        <p>無論看妳在三鐵賽道上衝刺、騎著單車挑戰陡坡，還是和妳一起規劃下一次的旅行冒險，妳的活力和堅持每一天都在啟發著我。我好喜歡妳的充滿熱情、妳的幹勁，還有我們在一起時所有大笑的瞬間。希望新的一年能帶妳解鎖更多目標（還有蓋更多護照章）！</p>
+        <!-- 互動第二關：主卡片內容（答對後顯示） -->
+        <div id="main-card">
+            <h1>生日快樂！🥳💙</h1>
+            <p>給我最棒的女朋友！我特地為妳打造了這個專屬的網頁角落，用來慶祝妳的大日子。</p>
 
-        <!-- 未來冒險清單 -->
-        <h2>我們接下來的大冒險 🗺️</h2>
-        <ul style="text-align: left; display: inline-block; font-size: 1.1em; line-height: 1.8;">
-            <li>🌍 探索新的城市，一起把妳的旅遊清單全部打勾。</li>
-            <li>🚴‍♂️ 尋找最美的單車路線，一路騎車吹風。</li>
-            <li>🥇 在妳的下一場重要比賽終點線，大聲為妳歡呼喝采。</li>
-        </ul>
-
-        <!-- 互動式禮物券 -->
-        <h2>妳的專屬生日禮物券 🎟️</h2>
-        <p><em>（點擊卡片即可兌換喔！）</em></p>
-        <div class="coupon-container">
-            <div class="coupon" onclick="claimCoupon(1, '賽後全身按摩放鬆 + 特製果昔外送')">
-                <strong>🚴‍♀️ 禮物券 #1</strong>
-                <p id="c1-text">點擊解鎖獎勵...</p>
+            <!-- 專屬彩色標籤 -->
+            <div class="interest-grid">
+                <!-- F1：法拉利紅 -->
+                <div class="interest-badge" style="border-color: #ef4444; color: #b91c1c; background-color: #fef2f2;">🏎️ 樂樂首席副駕</div>
+                <!-- 三鐵：運動活力綠 -->
+                <div class="interest-badge" style="border-color: #10b981; color: #047857; background-color: #ecfdf5;">🏊‍♀️ 🚴‍♀️ 🏃‍♀️ 三鐵女王</div>
+                <!-- 旅遊：冒險探險橘 -->
+                <div class="interest-badge" style="border-color: #f97316; color: #c2410c; background-color: #fff7ed;">✈️ 🇮🇸 🇯🇵 世界旅人</div>
             </div>
-            <div class="coupon" onclick="claimCoupon(2, '機票住宿我全包！專屬規劃的小週末輕旅行')">
-                <strong>✈️ 禮物券 #2</strong>
-                <p id="c2-text">點擊解鎖獎勵...</p>
-            </div>
-        </div>
-        
-        <!-- 角色彩蛋專區 -->
-        <h2>點擊牠們聽聽祝福 💬</h2>
-        <div style="font-size: 2.5em; cursor: pointer; margin-top: 10px;">
-            <span onclick="speakCharacter('hangyodon')" title="點擊人魚漢頓">🐟</span> 
-            <span onclick="speakCharacter('pikmin')" title="點擊藍色皮克敏">🟦🌱</span>
-        </div>
-        <div id="bubble" class="character-bubble"></div>
 
-        <p style="margin-top: 40px; font-size: 1.5em; font-weight: bold;">❤️ 我愛妳！❤️</p>
+            <!-- 給她的話 -->
+            <h2>寫給妳的心裡話 📝</h2>
+            <p>無論看妳在三鐵賽道上衝刺、騎著單車挑戰陡坡，還是和妳一起規劃下一次的旅行冒險，妳的活力和堅持每一天都在啟發著我。我好喜歡妳的充滿熱情、妳的幹勁，還有我們在一起時所有大笑的瞬間。希望新的一年能帶妳解鎖更多目標（還有蓋更多護照章）！</p>
+
+            <!-- 未來冒險清單 -->
+            <h2>我們接下來的大冒險 🗺️</h2>
+            <ul style="text-align: left; display: inline-block; font-size: 1.1em; line-height: 1.8;">
+                <li>🌍 探索新的城市，一起把妳的旅遊清單全部打勾。</li>
+                <li>🚴‍♂️ 尋找最美的單車路線，一路騎車吹風。</li>
+                <li>🥇 在妳的下一場重要比賽終點線，大聲為妳歡呼喝采。</li>
+            </ul>
+
+            <!-- 互動式禮物券 -->
+            <h2>妳的專屬生日禮物券 🎟️</h2>
+            <p><em>（點擊卡片即可兌換喔！）</em></p>
+            <div class="coupon-container">
+                <div class="coupon" onclick="claimCoupon(1, '賽後全身按摩放鬆 + 特製果昔外送')">
+                    <strong>🚴‍♀️ 禮物券 #1</strong>
+                    <p id="c1-text">點擊解鎖獎勵...</p>
+                </div>
+                <div class="coupon" onclick="claimCoupon(2, '機票住宿我全包！專屬規劃的小週末輕旅行')">
+                    <strong>✈️ 禮物券 #2</strong>
+                    <p id="c2-text">點擊解鎖獎勵...</p>
+                </div>
+            </div>
+            
+            <!-- 角色彩蛋專區 -->
+            <h2>點擊牠們聽聽祝福 💬</h2>
+            <div style="font-size: 2.5em; cursor: pointer; margin-top: 10px;">
+                <span onclick="speakCharacter('hangyodon')" title="點擊人魚漢頓">🐟</span> 
+                <span onclick="speakCharacter('pikmin')" title="點擊藍色皮克敏">🟦🌱</span>
+            </div>
+            <div id="bubble" class="character-bubble"></div>
+
+            <p style="margin-top: 40px; font-size: 1.5em; font-weight: bold;">❤️ 我愛妳！❤️</p>
+        </div>
+
     </div>
 
     <!-- 互動網頁邏輯 (JavaScript) -->
@@ -211,7 +226,7 @@
         function checkAnswer() {
             const userAnswer = document.getElementById("quiz-answer").value.toLowerCase().trim();
             
-            // 請把 "日本" 更換成妳設定的正確答案（建議維持小寫或中文）
+            // 請維持設定你的正確答案
             const correctAnswer = "日本"; 
 
             if (userAnswer === correctAnswer) {
