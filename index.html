@@ -184,7 +184,7 @@
             background-color: #e0f2fe;
         }
         
-        /* 💬 角色大頭貼圖片按鈕樣式（放大 + 完美適應版） */
+        /* 💬 角色頭像圖片按鈕樣式（微圓角正方形精緻版） */
         .character-btn-container {
             display: flex;
             justify-content: center;
@@ -192,15 +192,15 @@
             margin-top: 20px;
         }
         .character-img-btn {
-            width: 110px;  /* 🚀 大頭貼尺寸從 75px 放大到 110px */
+            width: 110px;  
             height: 110px;
-            border-radius: 50%; /* 完美圓形外框 */
+            border-radius: 16px; /* 🚀 核心修正：從 50% 改為 16px，變成優雅的微圓角正方形 */
             border: 3px solid #7dd3fc;
-            background-color: white; /* 圖片縮小後的背景乾淨白色 */
+            background-color: white; 
             
-            /* 🚀 核心修正：確保整張圖片等比例縮小塞進圓圈，絕不裁切任何角落 */
+            /* 確保整張圖片等比例縮進格子，絕不裁切邊角 */
             object-fit: contain; 
-            padding: 6px; /* 增加一點內衬留白，營造徽章般的精緻質感 */
+            padding: 6px; 
             
             box-sizing: border-box;
             cursor: pointer;
