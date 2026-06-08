@@ -73,13 +73,13 @@
         #main-card {
             background-color: rgba(255, 255, 255, 0.95);
             width: 100%;
-            max-width: 800px; /* 稍微拉寬，讓多張照片排起來更好看 */
+            max-width: 800px;
             padding: 40px 25px;
             border-radius: 24px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             border: 3px solid #7dd3fc;
             box-sizing: border-box;
-            display: none !important;
+            display: none !important; /* 一開始強力隱藏 */
         }
 
         h1 {
@@ -112,10 +112,10 @@
             border: 1px solid;
         }
 
-        /* 📸 縮小版拍立得照片牆樣式 (Grid 矩陣) */
+        /* 📸 縮小版拍立得照片牆樣式 */
         .gallery-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 自動塞滿，單張最小 150px */
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
             margin-top: 25px;
             padding: 15px;
@@ -125,7 +125,7 @@
         }
         .polaroid {
             background: white;
-            padding: 8px 8px 16px 8px; /* 縮小留白 */
+            padding: 8px 8px 16px 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             border-radius: 3px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
@@ -133,14 +133,12 @@
             position: relative;
         }
         
-        /* 強力放大效果 (Zoom 更顯著) */
         .polaroid:hover {
-            transform: scale(1.45) rotate(0deg) !important; /* 從 1.05 加大到 1.45 倍！ */
+            transform: scale(1.45) rotate(0deg) !important;
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            z-index: 50; /* 確保放大時不會被旁邊的照片遮住 */
+            z-index: 50;
         }
         
-        /* 微幅交錯的歪斜感，讓照片牆更自然可愛 */
         .polaroid:nth-child(4n+1) { transform: rotate(-2deg); }
         .polaroid:nth-child(4n+2) { transform: rotate(3deg); }
         .polaroid:nth-child(4n+3) { transform: rotate(-3deg); }
@@ -148,7 +146,7 @@
 
         .polaroid img {
             width: 100%;
-            height: 130px; /* 縮小照片高度 */
+            height: 130px;
             object-fit: cover;
             border: 1px solid #f1f5f9;
         }
@@ -157,10 +155,10 @@
             font-weight: bold;
             color: #475569;
             margin-top: 8px;
-            font-size: 0.75em; /* 字體跟著縮小 */
+            font-size: 0.75em;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis; /* 字太多時自動變多個點，避免破版 */
+            text-overflow: ellipsis;
         }
 
         /* 互動式禮物券樣式 */
@@ -206,9 +204,9 @@
             <h2>🔒 壽星專屬安全檢查</h2>
             <p>請輸入我們之間的專屬密碼來解鎖卡片：</p>
             <p><strong>我們最喜歡一起去旅遊的國家/地方是哪裡？</strong></p> 
-            <input type="text" id="quiz-answer" placeholder="請在這裡輸入答案...">
+            <input type="text" id="quiz-answer" placeholder="請在這裡輸入答案..." onkeypress="handleKeyPress(event)">
             <br>
-            <button onclick="checkAnswer()">解鎖生日卡片 ✨</button>
+            <button id="submit-btn" onclick="checkAnswer()">解鎖生日卡片 ✨</button>
             <div id="error-message">❌ 答案不對喔！再認真猜一次嘛！😉</div>
         </div>
 
@@ -229,27 +227,96 @@
             <p>把鼠標移到照片上（或點擊照片）會驚喜放大喔！</p>
             
             <div class="gallery-container">
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=300" alt="照片1">
-                    <div class="caption">🚴‍♂️ 單車冒險日</div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=300" alt="1"><div class="caption">🚴‍♂️ 單車冒險日</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300" alt="2"><div class="caption">✈️ 浪漫海灘假期</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=300" alt="3"><div class="caption">🥇 三鐵完賽時刻</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300" alt="4"><div class="caption">☕ 下午茶約會</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=300" alt="5"><div class="caption">🌅 一起看日落</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300" alt="6"><div class="caption">🍕 美食吃貨行程</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=300" alt="7"><div class="caption">🚗 公路旅行出發</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=300" alt="8"><div class="caption">⛰️ 踏青登山挑戰</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=300" alt="9"><div class="caption">🎆 浪漫煙火秀</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=300" alt="10"><div class="caption">🎉 派對慶生驚喜</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300" alt="11"><div class="caption">🌲 森林漫步趣</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=300" alt="12"><div class="caption">🗺️ 城市街頭探索</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=300" alt="13"><div class="caption">⛵ 乘風破浪出海</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=300" alt="14"><div class="caption">🌸 春日賞花散策</div></div>
+            </div>
+
+            <h2>妳的專屬生日禮物券 🎟️</h2>
+            <p><em>（點擊卡片即可兌換喔！）</em></p>
+            <div class="coupon-container">
+                <div class="coupon" onclick="claimCoupon(1, '賽後全身按摩放鬆 + 特製果昔外送')">
+                    <strong>🚴‍♀️ 禮物券 #1</strong>
+                    <p id="c1-text">點擊解鎖獎勵...</p>
                 </div>
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300" alt="照片2">
-                    <div class="caption">✈️ 浪漫海灘假期</div>
+                <div class="coupon" onclick="claimCoupon(2, '機票住宿我全包！專屬規劃的小週末輕旅行')">
+                    <strong>✈️ 禮物券 #2</strong>
+                    <p id="c2-text">點擊解鎖獎勵...</p>
                 </div>
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=300" alt="照片3">
-                    <div class="caption">🥇 三鐵完賽時刻</div>
-                </div>
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300" alt="照片4">
-                    <div class="caption">☕ 下午茶約會</div>
-                </div>
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=300" alt="照片5">
-                    <div class="caption">🌅 一起看日落</div>
-                </div>
-                <div class="polaroid">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300" alt="照片6">
-                    <div class="caption">🍕 美食吃貨行程</div>
-                </div>
+            </div>
+            
+            <h2>點擊牠們聽聽祝福 💬</h2>
+            <div style="font-size: 2.5em; cursor: pointer; margin-top: 10px;">
+                <span onclick="speakCharacter('hangyodon')" title="點擊人魚漢頓">🐟</span> 
+                <span onclick="speakCharacter('pikmin')" title="點擊藍色皮克敏">🟦🌱</span>
+            </div>
+            <div id="bubble" class="character-bubble"></div>
+
+            <p style="margin-top: 40px; font-size: 1.5em; font-weight: bold;">❤️ 我愛妳！❤️</p>
+        </div>
+
+    </div>
+
+    <script>
+        // 確保點擊按鈕時 100% 被執行的驗證函式
+        function checkAnswer() {
+            const inputField = document.getElementById("quiz-answer");
+            if (!inputField) return;
+
+            const userAnswer = inputField.value.toLowerCase().trim();
+            const correctAnswer = "日本"; 
+
+            if (userAnswer === correctAnswer) {
+                // 先讓錯誤訊息消失
+                document.getElementById("error-message").style.display = "none";
+                // 隱藏鎖定畫面
+                document.getElementById("quiz-screen").style.display = "none";
+                
+                // 強制把主卡片的樣式覆寫為顯示狀態
+                const mainCard = document.getElementById("main-card");
+                mainCard.style.setProperty("display", "inline-block", "important");
+                
+                alert("🎉 密碼正確！生日快樂！！🎉");
+            } else {
+                // 答錯時強制顯示錯誤
+                document.getElementById("error-message").style.display = "block";
+            }
+        }
+
+        // 新增：按下鍵盤 Enter 鍵也可以觸發送出
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
+            }
+        }
+
+        function claimCoupon(num, reward) {
+            document.getElementById(`c${num}-text`).innerHTML = `<strong>已兌換：</strong> ${reward}! 🎁`;
+            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌現吧！`);
+        }
+
+        function speakCharacter(character) {
+            const bubble = document.getElementById("bubble");
+            bubble.style.display = "inline-block";
+            
+            if (character === 'hangyodon') {
+                bubble.innerText = "🐟 人魚漢頓（Hangyodon）說：祝妳生日快樂！今天像在水裡一樣游得自由自在！對了，別讓小百合把妳的蛋糕吃光喔！";
+            } else if (character === 'pikmin') {
+                bubble.innerText = "🟦🌱 藍色皮克敏說：我們今天不怕淹水，特地幫妳搬運了 10 顆超大、超甜的生日覆盆莓過來喔！";
+            }
+        }
+    </script>
+
+</body>
+</html>
