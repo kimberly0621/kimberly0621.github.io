@@ -161,7 +161,7 @@
             text-overflow: ellipsis;
         }
 
-        /* 🎟️ 互動式禮物券樣式（改為 3 張自適應排列） */
+        /* 🎟️ 互動式禮物券樣式 */
         .coupon-container {
             display: flex;
             justify-content: center;
@@ -174,7 +174,7 @@
             background-color: #f0f9ff;
             padding: 15px;
             border-radius: 12px;
-            width: 280px; /* 固定寬度讓三張排起來更整齊 */
+            width: 280px;
             box-sizing: border-box;
             cursor: pointer;
             transition: transform 0.2s, background-color 0.2s;
@@ -184,26 +184,31 @@
             background-color: #e0f2fe;
         }
         
-        /* 💬 角色大頭貼圖片按鈕樣式 */
+        /* 💬 角色大頭貼圖片按鈕樣式（放大 + 完美適應版） */
         .character-btn-container {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 15px;
+            gap: 40px;
+            margin-top: 20px;
         }
         .character-img-btn {
-            width: 75px;  /* 精緻小巧的大頭貼尺寸 */
-            height: 75px;
-            border-radius: 50%; /* 圓形頭像 */
+            width: 110px;  /* 🚀 大頭貼尺寸從 75px 放大到 110px */
+            height: 110px;
+            border-radius: 50%; /* 完美圓形外框 */
             border: 3px solid #7dd3fc;
-            background-color: white;
-            object-fit: cover;
+            background-color: white; /* 圖片縮小後的背景乾淨白色 */
+            
+            /* 🚀 核心修正：確保整張圖片等比例縮小塞進圓圈，絕不裁切任何角落 */
+            object-fit: contain; 
+            padding: 6px; /* 增加一點內衬留白，營造徽章般的精緻質感 */
+            
+            box-sizing: border-box;
             cursor: pointer;
             transition: transform 0.2s, border-color 0.2s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         .character-img-btn:hover {
-            transform: scale(1.15);
+            transform: scale(1.12); /* 滑鼠懸停微幅放大 */
             border-color: #0284c7;
         }
 
