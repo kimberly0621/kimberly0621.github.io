@@ -276,16 +276,16 @@
             <h2>妳的專屬生日禮物券</h2>
             <p><em>（點擊卡片即可兌換喔！）</em></p>
             <div class="coupon-container">
-                <div class="coupon" onclick="claimCoupon(1, '賽後全身按摩放鬆 + 特製果昔外送')">
-                    <strong>🚴‍♀️ 禮物券 #1</strong>
+                <div class="coupon" onclick="claimCoupon(1, '陪妳去看一場妳想看的電影')">
+                    <strong>🎬 禮物券 #1</strong>
                     <p id="c1-text">點擊解鎖獎勵...</p>
                 </div>
-                <div class="coupon" onclick="claimCoupon(2, '機票住宿我全包！專屬規劃的小週末輕旅行')">
-                    <strong>✈️ 禮物券 #2</strong>
+                <div class="coupon" onclick="claimCoupon(2, '咖啡廳黏土創意手作')">
+                    <strong>🎨 禮物券 #2</strong>
                     <p id="c2-text">點擊解鎖獎勵...</p>
                 </div>
-                <div class="coupon" onclick="claimCoupon(3, '機票門票我全包！陪妳去看一場夢幻的現場 F1 大賽 🏎️')">
-                    <strong>🏎️ 禮物券 #3</strong>
+                <div class="coupon" onclick="claimCoupon(3, '騎車完消暑吃冰看風景')">
+                    <strong>🍧 禮物券 #3</strong>
                     <p id="c3-text">點擊解鎖獎勵...</p>
                 </div>
             </div>
@@ -331,7 +331,7 @@
 
         function claimCoupon(num, reward) {
             document.getElementById(`c${num}-text`).innerHTML = `<strong>已兌換：</strong> ${reward}! 🎁`;
-            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌現吧！`);
+            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌換吧！`);
         }
 
         function speakCharacter(character) {
