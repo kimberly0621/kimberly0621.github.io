@@ -79,7 +79,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             border: 3px solid #7dd3fc;
             box-sizing: border-box;
-            display: none !important; /* 一開始強力隱藏 */
+            display: none !important;
         }
 
         h1 {
@@ -161,20 +161,21 @@
             text-overflow: ellipsis;
         }
 
-        /* 互動式禮物券樣式 */
+        /* 🎟️ 互動式禮物券樣式（改為 3 張自適應排列） */
         .coupon-container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 15px;
             margin-top: 20px;
         }
         .coupon {
             border: 2px dashed #0284c7;
             background-color: #f0f9ff;
             padding: 15px;
-            margin: 10px;
             border-radius: 12px;
-            width: 42%;
+            width: 280px; /* 固定寬度讓三張排起來更整齊 */
+            box-sizing: border-box;
             cursor: pointer;
             transition: transform 0.2s, background-color 0.2s;
         }
@@ -183,15 +184,39 @@
             background-color: #e0f2fe;
         }
         
+        /* 💬 角色大頭貼圖片按鈕樣式 */
+        .character-btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        .character-img-btn {
+            width: 75px;  /* 精緻小巧的大頭貼尺寸 */
+            height: 75px;
+            border-radius: 50%; /* 圓形頭像 */
+            border: 3px solid #7dd3fc;
+            background-color: white;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .character-img-btn:hover {
+            transform: scale(1.15);
+            border-color: #0284c7;
+        }
+
         /* 隱藏彩蛋對話框樣式 */
         .character-bubble {
             background-color: #e0f2fe;
-            padding: 12px;
+            padding: 15px;
             border-radius: 12px;
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             font-weight: bold;
             max-width: 80%;
+            border: 1px solid #bae6fd;
             display: none;
         }
     </style>
@@ -254,12 +279,16 @@
                     <strong>✈️ 禮物券 #2</strong>
                     <p id="c2-text">點擊解鎖獎勵...</p>
                 </div>
+                <div class="coupon" onclick="claimCoupon(3, '機票門票我全包！陪妳去看一場夢幻的現場 F1 大賽 🏎️')">
+                    <strong>🏎️ 禮物券 #3</strong>
+                    <p id="c3-text">點擊解鎖獎勵...</p>
+                </div>
             </div>
             
             <h2>點擊牠們聽聽祝福 💬</h2>
-            <div style="font-size: 2.5em; cursor: pointer; margin-top: 10px;">
-                <span onclick="speakCharacter('hangyodon')" title="點擊人魚漢頓">🐟</span> 
-                <span onclick="speakCharacter('pikmin')" title="點擊藍色皮克敏">🟦🌱</span>
+            <div class="character-btn-container">
+                <img src="hangyodon.png" alt="人魚漢頓" class="character-img-btn" onclick="speakCharacter('hangyodon')" title="點擊人魚漢頓">
+                <img src="pikmin.png" alt="藍色皮克敏" class="character-img-btn" onclick="speakCharacter('pikmin')" title="點擊藍色皮克敏">
             </div>
             <div id="bubble" class="character-bubble"></div>
 
@@ -269,7 +298,6 @@
     </div>
 
     <script>
-        // 確保點擊按鈕時 100% 被執行的驗證函式
         function checkAnswer() {
             const inputField = document.getElementById("quiz-answer");
             if (!inputField) return;
@@ -278,23 +306,18 @@
             const correctAnswer = "日本"; 
 
             if (userAnswer === correctAnswer) {
-                // 先讓錯誤訊息消失
                 document.getElementById("error-message").style.display = "none";
-                // 隱藏鎖定畫面
                 document.getElementById("quiz-screen").style.display = "none";
                 
-                // 強制把主卡片的樣式覆寫為顯示狀態
                 const mainCard = document.getElementById("main-card");
                 mainCard.style.setProperty("display", "inline-block", "important");
                 
                 alert("🎉 密碼正確！生日快樂！！🎉");
             } else {
-                // 答錯時強制顯示錯誤
                 document.getElementById("error-message").style.display = "block";
             }
         }
 
-        // 新增：按下鍵盤 Enter 鍵也可以觸發送出
         function handleKeyPress(event) {
             if (event.key === "Enter") {
                 checkAnswer();
