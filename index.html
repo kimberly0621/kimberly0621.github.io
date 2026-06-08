@@ -194,21 +194,18 @@
         .character-img-btn {
             width: 110px;  
             height: 110px;
-            border-radius: 16px; /* 🚀 核心修正：從 50% 改為 16px，變成優雅的微圓角正方形 */
+            border-radius: 16px; 
             border: 3px solid #7dd3fc;
             background-color: white; 
-            
-            /* 確保整張圖片等比例縮進格子，絕不裁切邊角 */
             object-fit: contain; 
             padding: 6px; 
-            
             box-sizing: border-box;
             cursor: pointer;
             transition: transform 0.2s, border-color 0.2s;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         .character-img-btn:hover {
-            transform: scale(1.12); /* 滑鼠懸停微幅放大 */
+            transform: scale(1.12); 
             border-color: #0284c7;
         }
 
@@ -250,10 +247,10 @@
                 <div class="interest-badge" style="border-color: #1d4ed8; color: #1e3a8a; background-color: #eff6ff;">✈️ 🇮🇸 🇯🇵 世界旅人</div>
             </div>
 
-            <h2>寫給妳的心裡話</h2>
+            <h2>寫給妳的心裡話 📝</h2>
             <p>無論看妳在三鐵賽道上衝刺、騎著單車挑戰陡坡，還是和妳一起規劃下一次的旅行冒險，妳的活力和堅持每一天都在啟發著我。我好喜歡妳的充滿熱情、妳的幹勁，還有我們在一起時所有大笑的瞬間。希望新的一年能帶妳解鎖更多目標（還有蓋更多護照章）！</p>
 
-            <h2>我們的專屬回憶牆</h2>
+            <h2>我們的專屬回憶牆 🖼️</h2>
             <p>把鼠標移到照片上（或點擊照片）會驚喜放大喔！</p>
             
             <div class="gallery-container">
@@ -271,26 +268,28 @@
                 <div class="polaroid"><img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=300" alt="12"><div class="caption">🗺️ 城市街頭探索</div></div>
                 <div class="polaroid"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=300" alt="13"><div class="caption">⛵ 乘風破浪出海</div></div>
                 <div class="polaroid"><img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=300" alt="14"><div class="caption">🌸 春日賞花散策</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=300" alt="15"><div class="caption">🏔️ 壯麗雪山紀行</div></div>
+                <div class="polaroid"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300" alt="16"><div class="caption">🌌 星空露營之夜</div></div>
             </div>
 
-            <h2>妳的專屬生日禮物券</h2>
+            <h2>妳的專屬生日禮物券 🎟️</h2>
             <p><em>（點擊卡片即可兌換喔！）</em></p>
             <div class="coupon-container">
-                <div class="coupon" onclick="claimCoupon(1, '陪妳去看一場妳想看的電影')">
+                <div class="coupon" onclick="claimCoupon(1, '陪妳去看一場妳想看的電影，不用配合我的喜好！（爆米花可樂我買單）🎬')">
                     <strong>🎬 禮物券 #1</strong>
-                    <p id="c1-text">點擊解鎖獎勵...</p>
+                    <p id="c1-text">電影之夜！片單妳決定，爆米花可樂我全包</p>
                 </div>
-                <div class="coupon" onclick="claimCoupon(2, '咖啡廳黏土創意手作')">
+                <div class="coupon" onclick="claimCoupon(2, '找間舒服的咖啡廳邊喝咖啡邊捏黏土，今天不滑手機，專心陪妳戳戳捏捏！🎨')">
                     <strong>🎨 禮物券 #2</strong>
-                    <p id="c2-text">點擊解鎖獎勵...</p>
+                    <p id="c2-text">手作約會！咖啡廳配培樂多，點心我買單</p>
                 </div>
-                <div class="coupon" onclick="claimCoupon(3, '騎車完消暑吃冰看風景')">
+                <div class="coupon" onclick="claimCoupon(3, '消暑吃冰行程！想吃哪家、加什麼配料妳決定，我負責排隊付錢！🍧')">
                     <strong>🍧 禮物券 #3</strong>
-                    <p id="c3-text">點擊解鎖獎勵...</p>
+                    <p id="c3-text">吃冰大隊出動！配料隨妳加，大碗冰品我請客</p>
                 </div>
             </div>
             
-            <h2>點擊牠們聽聽祝福</h2>
+            <h2>點擊牠們聽聽祝福 💬</h2>
             <div class="character-btn-container">
                 <img src="Hangyodon.png" alt="人魚漢頓" class="character-img-btn" onclick="speakCharacter('hangyodon')" title="點擊人魚漢頓">
                 <img src="pikmin.png" alt="藍色皮克敏" class="character-img-btn" onclick="speakCharacter('pikmin')" title="點擊藍色皮克敏">
@@ -313,10 +312,8 @@
             if (userAnswer === correctAnswer) {
                 document.getElementById("error-message").style.display = "none";
                 document.getElementById("quiz-screen").style.display = "none";
-                
                 const mainCard = document.getElementById("main-card");
                 mainCard.style.setProperty("display", "inline-block", "important");
-                
                 alert("🎉 密碼正確！生日快樂！！🎉");
             } else {
                 document.getElementById("error-message").style.display = "block";
@@ -330,14 +327,13 @@
         }
 
         function claimCoupon(num, reward) {
-            document.getElementById(`c${num}-text`).innerHTML = `<strong>已兌換：</strong> ${reward}!`;
-            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌換吧！`);
+            document.getElementById(`c${num}-text`).innerHTML = `<strong>已兌換：</strong> ${reward}! 🎁`;
+            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌現吧！`);
         }
 
         function speakCharacter(character) {
             const bubble = document.getElementById("bubble");
             bubble.style.display = "inline-block";
-            
             if (character === 'hangyodon') {
                 bubble.innerText = "醜魚說：祝妳生日快樂！今天像在水裡一樣游得自由自在！對了，別讓小百合把妳的蛋糕吃光喔！";
             } else if (character === 'pikmin') {
