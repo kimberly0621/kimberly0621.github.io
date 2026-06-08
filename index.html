@@ -156,15 +156,20 @@
             border: 1px solid #f1f5f9;
             display: block;
         }
+        
+        /* 🚀 修正文字包裝：移除限制，允許長句子自動換行顯示完整內容 */
         .caption {
             font-family: 'PingFang TC', sans-serif;
             font-weight: bold;
             color: #475569;
             margin-top: 10px;
             font-size: 0.75em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: normal;      /* 允許文字正常換行 */
+            overflow: visible;       /* 確保文字不被隱藏 */
+            text-overflow: clip;     /* 移除省略號效果 */
+            text-align: center;      /* 文字置中 */
+            padding: 0 4px;          /* 防止邊緣碰撞 */
+            line-height: 1.4;        /* 調整換行時的行高舒適度 */
         }
 
         /* 🎟️ 互動式禮物券樣式 */
@@ -256,7 +261,7 @@
             <h2>寫給妳的心裡話</h2>
             <p>無論看妳在三鐵賽道上衝刺、騎著單車挑戰陡坡，還是和妳一起規劃下一次的旅行冒險，妳的活力和堅持每一天都在啟發著我。我好喜歡妳的充滿熱情、妳的幹勁，還有我們在一起時所有大笑的瞬間。希望新的一年能帶妳解鎖更多目標（還有蓋更多護照章）！</p>
 
-            <h2>我們的專屬回憶牆</h2>
+            <h2>妳的生活點滴回憶牆</h2>
             <p>把游標移到照片上（或點擊照片）可以放大喔！</p>
             
             <div class="gallery-container">
