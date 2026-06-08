@@ -241,7 +241,7 @@
         <div id="quiz-screen">
             <h2>🔒 壽星專屬安全檢查</h2>
             <p>請輸入我們之間的專屬密碼來解鎖卡片：</p>
-            <p><strong>我們最喜歡一起去旅遊的國家/地方是哪裡？</strong></p> 
+            <p><strong>請問我給今天生日的壽星的專屬小名是什麼呢？</strong></p> 
             <input type="text" id="quiz-answer" placeholder="請在這裡輸入答案..." onkeypress="handleKeyPress(event)">
             <br>
             <button id="submit-btn" onclick="checkAnswer()">解鎖生日卡片 ✨</button>
@@ -318,7 +318,7 @@
             if (!inputField) return;
 
             const userAnswer = inputField.value.toLowerCase().trim();
-            const correctAnswer = "日本"; 
+            const correctAnswer = "小藍金"; 
 
             if (userAnswer === correctAnswer) {
                 document.getElementById("error-message").style.display = "none";
@@ -339,16 +339,16 @@
 
         function claimCoupon(num, reward) {
             document.getElementById(`c${num}-text`).innerHTML = `<strong>已兌換：</strong> ${reward}!`;
-            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌現吧！`);
+            alert(`🎟️ 成功兌換禮物券 #${num}！快截圖傳給我兌換吧！`);
         }
 
         function speakCharacter(character) {
             const bubble = document.getElementById("bubble");
             bubble.style.display = "inline-block";
             if (character === 'hangyodon') {
-                bubble.innerText = "醜魚說：祝妳生日快樂！今天像在水裡一樣游得自由自在！對了，別讓小百合把妳的蛋糕吃光喔！";
+                bubble.innerText = "醜魚說：祝妳生日快樂！送你這顆蛋糕！小心，別讓章魚把妳的蛋糕吃光喔！";
             } else if (character === 'pikmin') {
-                bubble.innerText = "藍皮說：我們今天不怕淹水，特地幫妳搬運了 10 顆超大、超甜的生日覆盆莓過來喔！";
+                bubble.innerText = "藍皮說：我和我的藍皮朋友們為了妳生日的到來採集到了一顆大蘋果！我們也安排好讓一個人類幫我們交給你！";
             }
         }
     </script>
