@@ -122,15 +122,17 @@
             background-color: #f8fafc;
             border-radius: 16px;
             border: 1px dashed #cbd5e1;
+            align-items: start; /* 🚀 確保高矮不同的照片能維持自然的頂端對齊排列 */
         }
         .polaroid {
             background: white;
-            padding: 8px 8px 16px 8px;
+            padding: 8px 8px 14px 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            border-radius: 3px;
+            border-radius: 4px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
             cursor: pointer;
             position: relative;
+            box-sizing: border-box;
         }
         
         .polaroid:hover {
@@ -144,17 +146,21 @@
         .polaroid:nth-child(4n+3) { transform: rotate(-3deg); }
         .polaroid:nth-child(4n) { transform: rotate(2deg); }
 
+        /* 🚀 核心修正：移除硬編碼的固定高度，改用寬高自適應以完整呈現原本的相片比例 */
         .polaroid img {
             width: 100%;
-            height: 130px;
-            object-fit: cover;
+            height: auto;
+            max-height: 200px; /* 限制直式照片不至於拉得過長 */
+            object-fit: contain;
+            border-radius: 2px;
             border: 1px solid #f1f5f9;
+            display: block;
         }
         .caption {
             font-family: 'PingFang TC', sans-serif;
             font-weight: bold;
             color: #475569;
-            margin-top: 8px;
+            margin-top: 10px;
             font-size: 0.75em;
             white-space: nowrap;
             overflow: hidden;
@@ -184,7 +190,7 @@
             background-color: #e0f2fe;
         }
         
-        /* 💬 角色頭像圖片按鈕樣式（微圓角正方形精緻版） */
+        /* 💬 角色頭像圖片按鈕樣式 */
         .character-btn-container {
             display: flex;
             justify-content: center;
